@@ -11,6 +11,7 @@ import com.sriyank.criminalintent.R;
 
 public abstract class SingleFragmentClass extends AppCompatActivity {
     //This is a smart move guys yeah
+    //This is a smart move guys yeah
 
     protected abstract Fragment createFragment();
 
