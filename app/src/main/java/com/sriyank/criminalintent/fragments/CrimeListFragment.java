@@ -1,7 +1,6 @@
 package com.sriyank.criminalintent.fragments;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sriyank.criminalintent.R;
 import com.sriyank.criminalintent.data.CrimeLab;
@@ -68,7 +69,8 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(CrimeViewHolder holder, int position) {
-
+            Crime crime=mCrimes.get(position);
+            holder.Bind(crime);
         }
 
         @Override
@@ -76,9 +78,30 @@ public class CrimeListFragment extends Fragment {
             return mCrimes.size();
         }
 
-        public class CrimeViewHolder extends RecyclerView.ViewHolder {
+        public class CrimeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+            private TextView mTitleTextView;
+            private TextView mDateTextView;
+            private Crime mCrime;
+
             public CrimeViewHolder(@NonNull View itemView) {
                 super(itemView);
+                itemView.setOnClickListener(this);
+
+                mTitleTextView=(TextView)itemView.findViewById(R.id.crime_title);
+                mDateTextView=(TextView)itemView.findViewById(R.id.crime_date);
+
+            }
+
+            public void Bind(Crime crime){
+                mCrime=crime;
+                mTitleTextView.setText(mCrime.getTitle());
+                mDateTextView.setText(mCrime.getDate().toString());
+            }
+
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), mCrime.getTitle()+ "  clicked", Toast.LENGTH_SHORT).show();
             }
         }
     }

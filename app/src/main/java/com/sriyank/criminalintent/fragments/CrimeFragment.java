@@ -17,7 +17,6 @@ import android.widget.EditText;
 import com.sriyank.criminalintent.R;
 import com.sriyank.criminalintent.models.Crime;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -75,6 +74,7 @@ public class CrimeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return v;
+
     }
 
 
